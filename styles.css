@@ -1,0 +1,364 @@
+/* Task summary: Give the personal CV a professional technology-focused layout
+   while keeping every section easy to scan and accessible on smaller screens. */
+
+/* Pseudocode:
+   1. Create a bold header with Sandiso's name and professional focus.
+   2. Use a sidebar for contact details, skills, and software knowledge.
+   3. Use a timeline layout for work experience and education.
+   4. Change the two-column layout to one column on smaller screens. */
+
+:root {
+    --ink: #172126;
+    --paper: #f6f4ef;
+    --line: #c9d0c7;
+    --teal: #0b6e69;
+    --lime: #c9dd61;
+    --orange: #d96b2b;
+    --muted: #5d6668;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    color: var(--ink);
+    background-color: var(--paper);
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 16px;
+    line-height: 1.6;
+}
+
+h1,
+h2,
+h3,
+p {
+    margin-top: 0;
+}
+
+h1,
+h2,
+h3 {
+    line-height: 1.15;
+}
+
+h1 {
+    margin-bottom: 10px;
+    color: #ffffff;
+    font-size: 48px;
+}
+
+h2 {
+    margin-bottom: 18px;
+    font-size: 27px;
+}
+
+h3 {
+    margin-bottom: 6px;
+    font-size: 20px;
+}
+
+a {
+    color: inherit;
+    text-decoration-color: var(--orange);
+    text-decoration-thickness: 2px;
+    text-underline-offset: 3px;
+}
+
+a:hover,
+a:focus {
+    color: var(--teal);
+}
+
+.site-header {
+    border-bottom: 8px solid var(--lime);
+    color: #ffffff;
+    background-color: var(--ink);
+}
+
+.header-content,
+.resume-layout {
+    width: min(100% - 40px, 1180px);
+    margin: 0 auto;
+}
+
+.header-content {
+    display: grid;
+    grid-template-columns: 86px 1fr auto;
+    gap: 28px;
+    align-items: center;
+    padding: 48px 0;
+}
+
+.identity-mark {
+    display: grid;
+    width: 86px;
+    height: 86px;
+    place-items: center;
+    color: var(--ink);
+    background-color: var(--lime);
+    font-family: "Courier New", Courier, monospace;
+    font-size: 30px;
+    font-weight: bold;
+}
+
+.eyebrow,
+.section-label,
+.role-title,
+.availability,
+.entry-period,
+.organisation,
+.tool-list {
+    font-family: "Courier New", Courier, monospace;
+}
+
+.eyebrow,
+.section-label {
+    margin-bottom: 8px;
+    color: var(--orange);
+    font-size: 14px;
+    font-weight: bold;
+}
+
+.role-title {
+    margin-bottom: 0;
+    color: var(--lime);
+    font-weight: bold;
+}
+
+.availability {
+    margin: 0;
+    padding: 8px 12px;
+    color: var(--ink);
+    background-color: var(--lime);
+    font-size: 14px;
+    font-weight: bold;
+}
+
+.resume-layout {
+    display: grid;
+    grid-template-columns: minmax(240px, 0.72fr) minmax(0, 2fr);
+    align-items: start;
+}
+
+.sidebar {
+    min-height: 100%;
+    padding: 48px 32px 48px 0;
+    border-right: 1px solid var(--line);
+}
+
+.sidebar-section {
+    margin-bottom: 38px;
+}
+
+.sidebar h2 {
+    margin-bottom: 14px;
+    font-size: 20px;
+}
+
+.contact-list,
+.skills-list {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+.contact-list li {
+    margin-bottom: 12px;
+}
+
+.skills-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+}
+
+.skills-list li {
+    padding: 5px 9px;
+    border: 1px solid var(--line);
+    background-color: #ffffff;
+    font-size: 14px;
+    line-height: 1.35;
+}
+
+.tool-list {
+    margin-bottom: 0;
+    color: var(--muted);
+    font-size: 14px;
+    font-weight: bold;
+}
+
+.content-column {
+    padding: 48px 0 64px 48px;
+}
+
+.profile-summary {
+    padding-bottom: 36px;
+    border-bottom: 3px solid var(--ink);
+}
+
+.profile-summary h2 {
+    max-width: 680px;
+    font-size: 34px;
+}
+
+.profile-summary p:not(.section-label) {
+    max-width: 760px;
+    margin-bottom: 14px;
+}
+
+.timeline-section,
+.education-section {
+    padding-top: 42px;
+}
+
+.section-heading {
+    margin-bottom: 24px;
+}
+
+.section-heading h2 {
+    margin-bottom: 0;
+}
+
+.timeline-entry,
+.education-entry {
+    display: grid;
+    grid-template-columns: 130px minmax(0, 1fr);
+    gap: 24px;
+    padding: 22px 0;
+    border-top: 1px solid var(--line);
+}
+
+.timeline-entry:last-child,
+.education-entry:last-child {
+    border-bottom: 1px solid var(--line);
+}
+
+.entry-period {
+    margin: 0;
+    color: var(--teal);
+    font-size: 14px;
+    font-weight: bold;
+}
+
+.organisation {
+    margin-bottom: 14px;
+    color: var(--muted);
+    font-size: 14px;
+    font-weight: bold;
+}
+
+.entry-content ul {
+    margin: 0;
+    padding-left: 20px;
+}
+
+.entry-content li {
+    margin-bottom: 8px;
+}
+
+.achievement {
+    margin: 18px 0 0;
+    padding-left: 14px;
+    border-left: 4px solid var(--orange);
+    font-weight: bold;
+}
+
+.education-entry p:last-child {
+    margin-bottom: 0;
+}
+
+.site-footer {
+    padding: 24px 20px;
+    color: #ffffff;
+    background-color: var(--teal);
+    text-align: center;
+}
+
+.site-footer p {
+    margin-bottom: 0;
+    font-family: "Courier New", Courier, monospace;
+    font-weight: bold;
+}
+
+@media (max-width: 800px) {
+    .header-content {
+        grid-template-columns: 72px 1fr;
+        gap: 20px;
+        padding: 38px 0;
+    }
+
+    .identity-mark {
+        width: 72px;
+        height: 72px;
+        font-size: 25px;
+    }
+
+    .availability {
+        grid-column: 2;
+        justify-self: start;
+    }
+
+    .resume-layout {
+        grid-template-columns: 1fr;
+    }
+
+    .sidebar {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 24px;
+        padding: 36px 0;
+        border-right: 0;
+        border-bottom: 1px solid var(--line);
+    }
+
+    .sidebar-section {
+        margin-bottom: 0;
+    }
+
+    .content-column {
+        padding: 42px 0 56px;
+    }
+}
+
+@media (max-width: 600px) {
+    .header-content,
+    .resume-layout {
+        width: min(100% - 28px, 1180px);
+    }
+
+    .header-content {
+        grid-template-columns: 1fr;
+        gap: 16px;
+    }
+
+    .identity-mark {
+        width: 64px;
+        height: 64px;
+        font-size: 22px;
+    }
+
+    .availability {
+        grid-column: auto;
+    }
+
+    h1 {
+        font-size: 38px;
+    }
+
+    .sidebar {
+        grid-template-columns: 1fr;
+        gap: 30px;
+    }
+
+    .profile-summary h2 {
+        font-size: 29px;
+    }
+
+    .timeline-entry,
+    .education-entry {
+        grid-template-columns: 1fr;
+        gap: 8px;
+    }
+}
